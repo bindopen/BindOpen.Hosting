@@ -105,7 +105,7 @@ namespace BindOpen.Hosting
             if (options != null)
             {
                 options.EventActions ??= [];
-                options.EventActions.Add((HostEventKinds.OnInitSuccess, action));
+                options.EventActions.Add((HostBdoEventKinds.OnInitSuccess, action));
             }
 
             return options;
@@ -121,7 +121,7 @@ namespace BindOpen.Hosting
             if (options != null)
             {
                 options.EventActions ??= new();
-                options.EventActions.Add((HostEventKinds.OnInitFailure, action));
+                options.EventActions.Add((HostBdoEventKinds.OnInitFailure, action));
             }
 
             return options;
@@ -137,7 +137,7 @@ namespace BindOpen.Hosting
             if (options != null)
             {
                 options.EventActions ??= new();
-                options.EventActions.Add((HostEventKinds.OnExecutionSucess, action));
+                options.EventActions.Add((HostBdoEventKinds.OnExecutionSucess, action));
             }
 
             return options;
@@ -153,7 +153,7 @@ namespace BindOpen.Hosting
             if (options != null)
             {
                 options.EventActions ??= new();
-                options.EventActions.Add((HostEventKinds.OnExecutionFailure, action));
+                options.EventActions.Add((HostBdoEventKinds.OnExecutionFailure, action));
             }
 
             return options;
