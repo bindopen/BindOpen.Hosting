@@ -6,7 +6,7 @@ namespace BindOpen.Hosting
     /// The interface defines a hosted item.
     /// </summary>
     [Flags]
-    public enum HostEventKinds
+    public enum HostBdoEventKinds
     {
         None = 0,
 
