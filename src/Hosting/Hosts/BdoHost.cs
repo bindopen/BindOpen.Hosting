@@ -6,6 +6,7 @@ using BindOpen.Logging;
 using BindOpen.Logging.Loggers;
 using BindOpen.Scoping;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -45,6 +46,8 @@ namespace BindOpen.Hosting
 
         public IBdoLogger Logger { get; set; }
 
+        public List<IBdoLogger> Loggers { get; set; }
+
         public ProcessExecutionState State => _state;
 
         protected ProcessExecutionState _state;
@@ -66,16 +69,16 @@ namespace BindOpen.Hosting
             //log?.Sanitize();
 
             var log = Logger?.NewRootLog();
-            log?.AddEvent(EventKinds.Message, "Host starting...");
+            log?.AddEvent(BdoEventKinds.Message, "Host starting...");
 
             if (_state == ProcessExecutionState.Pending)
             {
-                log?.AddEvent(EventKinds.Message, "Host started successfully");
+                log?.AddEvent(BdoEventKinds.Message, "Host started successfully");
                 InitSucceeds();
             }
             else
             {
-                log?.AddEvent(EventKinds.Message, "Host loaded with errors");
+                log?.AddEvent(BdoEventKinds.Message, "Host loaded with errors");
                 Stop();
                 InitFails();
             }
@@ -93,7 +96,7 @@ namespace BindOpen.Hosting
             Clear();
 
             var log = Logger?.NewRootLog();
-            log?.AddEvent(EventKinds.Message, q => q.WithTitle("Host ended"));
+            log?.AddEvent(BdoEventKinds.Message, q => q.WithTitle("Host ended"));
             Logger?.Log(log);
         }
 
@@ -106,7 +109,7 @@ namespace BindOpen.Hosting
         /// </summary>
         private void InitSucceeds()
         {
-            InvokeTriggerAction(HostEventKinds.OnInitSuccess);
+            InvokeTriggerAction(HostBdoEventKinds.OnInitSuccess);
 
             OnInitSucceeds?.Invoke(this, new EventArgs());
         }
@@ -118,7 +121,7 @@ namespace BindOpen.Hosting
         /// </summary>
         private void InitFails()
         {
-            InvokeTriggerAction(HostEventKinds.OnInitFailure);
+            InvokeTriggerAction(HostBdoEventKinds.OnInitFailure);
 
             OnInitFails?.Invoke(this, new EventArgs());
         }
@@ -130,7 +133,7 @@ namespace BindOpen.Hosting
         /// </summary>
         private void ExecutionSucceeds()
         {
-            InvokeTriggerAction(HostEventKinds.OnExecutionSucess);
+            InvokeTriggerAction(HostBdoEventKinds.OnExecutionSucess);
 
             OnExecutionSucceeds?.Invoke(this, new EventArgs());
         }
@@ -142,14 +145,14 @@ namespace BindOpen.Hosting
         /// </summary>
         private void ExecutionFails()
         {
-            InvokeTriggerAction(HostEventKinds.OnExecutionFailure);
+            InvokeTriggerAction(HostBdoEventKinds.OnExecutionFailure);
 
             OnExecutionFails?.Invoke(this, new EventArgs());
         }
 
-        private void InvokeTriggerAction(HostEventKinds eventKind)
+        private void InvokeTriggerAction(HostBdoEventKinds eventKind)
         {
-            var action = Options?.EventActions?.FirstOrDefault(q => (eventKind & HostEventKinds.Any) == (q.EventKind & HostEventKinds.Any));
+            var action = Options?.EventActions?.FirstOrDefault(q => (eventKind & HostBdoEventKinds.Any) == (q.EventKind & HostBdoEventKinds.Any));
             action?._Action?.Invoke(this);
         }
 
@@ -175,7 +178,7 @@ namespace BindOpen.Hosting
 
             // we launch the standard initialization of service
 
-            var subLog = log?.InsertChild(EventKinds.Message, "Initializing host...");
+            var subLog = log?.InsertChild(BdoEventKinds.Message, "Initializing host...");
 
             IBdoLog childLog = null;
 
@@ -185,7 +188,7 @@ namespace BindOpen.Hosting
             {
                 // we load the host config
 
-                childLog = subLog?.InsertChild(EventKinds.Message, "Loading host configuration...");
+                childLog = subLog?.InsertChild(BdoEventKinds.Message, "Loading host configuration...");
 
                 Options.Settings ??= BdoData.NewMetaWrapper<BdoHostSettings>(this);
 
@@ -201,7 +204,7 @@ namespace BindOpen.Hosting
                             {
                                 loaded &= !file.IsRequired;
                                 subLog?.AddEvent(
-                                    file.IsRequired ? EventKinds.Error : EventKinds.Warning,
+                                    file.IsRequired ? BdoEventKinds.Error : BdoEventKinds.Warning,
                                     "Host config file ('" + BdoDefaultHostPaths.__DefaultHostConfigFileName + "') not found");
                             }
                             else
@@ -233,9 +236,9 @@ namespace BindOpen.Hosting
                                 Options.Settings.UpdateDetail(config);
                                 Options.Settings.UpdateProperties();
 
-                                if (childLog?.HasEvent(EventKinds.Error, EventKinds.Exception) != true)
+                                if (childLog?.HasEvent(BdoEventKinds.Error, BdoEventKinds.Exception) != true)
                                 {
-                                    childLog?.AddEvent(EventKinds.Message, "Host config loaded");
+                                    childLog?.AddEvent(BdoEventKinds.Message, "Host config loaded");
                                 }
                             }
                         }
@@ -246,7 +249,7 @@ namespace BindOpen.Hosting
                 {
                     // we load extensions
 
-                    childLog = subLog?.InsertChild(EventKinds.Message, "Loading extensions...");
+                    childLog = subLog?.InsertChild(BdoEventKinds.Message, "Loading extensions...");
 
                     loaded &= this.LoadExtensions(
                         q => q = Options.ExtensionLoadOptions
@@ -262,18 +265,18 @@ namespace BindOpen.Hosting
 
                     DepotStore = Options?.DepotStore;
 
-                    childLog = subLog?.InsertChild(EventKinds.Message, "Loading data store...");
+                    childLog = subLog?.InsertChild(BdoEventKinds.Message, "Loading data store...");
                     if (DepotStore == null)
                     {
-                        childLog?.AddEvent(EventKinds.Message, title: "No data store registered");
+                        childLog?.AddEvent(BdoEventKinds.Message, title: "No data store registered");
                     }
                     else
                     {
                         loaded &= DepotStore.LoadLazy(this, childLog);
 
-                        if (childLog?.HasEvent(EventKinds.Error, EventKinds.Exception) != true)
+                        if (childLog?.HasEvent(BdoEventKinds.Error, BdoEventKinds.Exception) != true)
                         {
-                            childLog?.AddEvent(EventKinds.Message, "Data store loaded (" + DepotStore.Depots.Count + " depots added)");
+                            childLog?.AddEvent(BdoEventKinds.Message, "Data store loaded (" + DepotStore.Depots.Count + " depots added)");
                         }
                     }
                 }

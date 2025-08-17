@@ -39,10 +39,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BindOpen.IO" Version="1.2.170" />
-    <PackageReference Include="BindOpen.Scoping" Version="1.2.170" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="BindOpen.IO" Version="1.2.173" />
+    <PackageReference Include="BindOpen.Scoping" Version="1.2.176" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.8" />
   </ItemGroup>
 
   <ItemGroup>

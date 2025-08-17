@@ -66,6 +66,6 @@ namespace BindOpen.Hosting.Settings
 
         // Trigger actions ----------------------
 
-        public List<(HostEventKinds EventKind, Action<IBdoHost> _Action)> EventActions { get; set; }
+        public List<(HostBdoEventKinds EventKind, Action<IBdoHost> _Action)> EventActions { get; set; }
     }
 }
