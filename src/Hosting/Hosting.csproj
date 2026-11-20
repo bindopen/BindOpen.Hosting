@@ -39,12 +39,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BindOpen.Dtos" Version="1.2.177" />
-    <PackageReference Include="BindOpen.Scoping" Version="1.2.177" />
+    <PackageReference Include="BindOpen.Scoping" Version="1.3.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Logging.Dtos\Logging.Dtos.csproj" />
     <ProjectReference Include="..\Logging\Logging.csproj" />
   </ItemGroup>
 
