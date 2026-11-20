@@ -1,9 +1,9 @@
-﻿using BindOpen.Logging;
-using BindOpen.Data;
+﻿using BindOpen.Data;
 using BindOpen.Data.Meta;
+using BindOpen.Data.Objects;
+using BindOpen.Logging;
 using BindOpen.Scoping;
 using System;
-using BindOpen.Data.Objects.Interfaces;
 
 namespace Microsoft.Extensions.Configuration
 {
