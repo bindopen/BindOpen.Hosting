@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="https://storage.bindopen.org/xsd/bindopen/kernel" elementFormDefault="qualified" targetNamespace="https://storage.bindopen.org/xsd/bindopen/kernel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="EventCriticality">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Low" />
+      <xs:enumeration value="Medium" />
+      <xs:enumeration value="High" />
+      <xs:enumeration value="VeryHigh" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>

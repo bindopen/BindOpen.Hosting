@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <AssemblyName>BindOpen.Hosting.Tests</AssemblyName>
     <PackageId>BindOpen.Hosting.Tests</PackageId>
     <Product>BindOpen.Kernel</Product>
     <Company>BindOpen</Company>
-    <Copyright>Copyright © BindOpen 2011-2025</Copyright>
+    <Copyright>Copyright © BindOpen 2011-2026</Copyright>
     <Description>BindOpen is a framework that allows you to build widely-extended applications. This package conducts unit tests on Runtime libraries.</Description>
     <Authors>Sumer Team</Authors>
     <RootNamespace>BindOpen.Tests.Runtime</RootNamespace>
@@ -40,11 +40,11 @@
 
   <ItemGroup>
     <PackageReference Include="BindOpen.Logging" Version="1.2.58" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.8" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageReference Include="NUnit" Version="4.4.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="5.1.0">
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
+    <PackageReference Include="NUnit" Version="5.0.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.3.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

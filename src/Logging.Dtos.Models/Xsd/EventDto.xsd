@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="https://storage.bindopen.org/xsd/bindopen/kernel" elementFormDefault="qualified" targetNamespace="https://storage.bindopen.org/xsd/bindopen/kernel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/DescribedDataItem.xsd"  />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/BdoDictionary.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/BdoMetaSet.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/EventCriticality.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/EventKind.xsd" />
+
+  <xs:complexType name="BdoEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DescribedDataItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="longDescription" type="BdoDictionary" />
+          <xs:element minOccurs="0" maxOccurs="1" name="detail" type="BdoMetaSet" />
+          <xs:element minOccurs="1" maxOccurs="1" name="criticality" type="EventCriticality" />
+        </xs:sequence>
+        <xs:attribute name="kind" type="EventKind" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>
