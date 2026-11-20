@@ -1,0 +1,14 @@
+﻿<xs:schema xmlns="https://storage.bindopen.org/xsd/bindopen/kernel" elementFormDefault="qualified" targetNamespace="https://storage.bindopen.org/xsd/bindopen/kernel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/Event.xsd" />
+
+  <xs:complexType name="BdoConditionalEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="BdoEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="conditionScript" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

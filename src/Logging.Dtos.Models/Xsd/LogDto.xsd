@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="https://storage.bindopen.org/xsd/bindopen/kernel" elementFormDefault="qualified" targetNamespace="https://storage.bindopen.org/xsd/bindopen/kernel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/DescribedDataItem.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/ProcessExecution.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/Configuration.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/BdoMetaSet.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/Event.xsd" />
+  <xs:include schemaLocation="https://storage.bindopen.org/xsd/bindopen/LogEvent.xsd" />
+
+  <xs:complexType name="BdoLog">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DescribedDataItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="execution" type="ProcessExecution" />
+          <xs:element minOccurs="0" maxOccurs="1" name="task" type="BdoConfiguration" />
+          <xs:element minOccurs="0" maxOccurs="1" name="detail" type="BdoMetaSet" />
+          <xs:element minOccurs="0" maxOccurs="1" name="parent" type="BdoLog" />
+          <xs:element minOccurs="0" maxOccurs="1" name="children" type="ArrayOfLog_Log" />
+          <xs:element minOccurs="0" maxOccurs="1" name="events" type="ArrayOfLogEvent_Log" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfLog_Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="child" nillable="true" type="BdoLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfLogEvent_Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BdoEvent" nillable="true" type="BdoLogEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="LoggerMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Any" />
+      <xs:enumeration value="Manual" />
+      <xs:enumeration value="Auto" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LogFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Yaml" />
+      <xs:enumeration value="Xml" />
+      <xs:enumeration value="Snap" />
+      <xs:enumeration value="Report" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

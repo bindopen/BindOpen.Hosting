@@ -65,7 +65,7 @@ namespace BindOpen.Data.Stores
                 {
                     foreach (var childMeta in subConfig)
                     {
-                        var set = BdoData.NewSet(childMeta?.ToArray());
+                        var set = BdoData.NewSet().With(childMeta?.ToArray());
 
                         var source = depot.Scope.NewMetaWrapper<BdoDatasource>(set);
                         source.WithName(childMeta.Name);
