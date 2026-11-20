@@ -3,6 +3,7 @@ using BindOpen.Data;
 using BindOpen.Data.Meta;
 using BindOpen.Scoping;
 using System;
+using BindOpen.Data.Objects.Interfaces;
 
 namespace Microsoft.Extensions.Configuration
 {

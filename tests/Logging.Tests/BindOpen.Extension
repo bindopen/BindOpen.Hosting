@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Tests.Core -->
+<extension id="001444da-7c6e-4d00-a498-c9048cad1832"  name="tests.Core"
+  xmlns="https://storage.bindopen.org/xsd/bindopen/kernel" xmlns:SchemaLocation="BdoExtensionDefinition BdoExtensionDefinition.xsd" >
+  <creationDate>2010-08-05</creationDate>
+  <lastModificationDate>2016-08-24</lastModificationDate>
+  <title>
+    <add.value key="en">BindOpen Core Test</add.value>
+  </title>
+  <description>
+    <add.value key="en">Extension library 'BindOpen.Logging.Tests'.</add.value>
+  </description>
+  <assembly>BindOpen.Logging.Tests</assembly>
+  <fileName>BindOpen.Logging.Tests.dll</fileName>
+  <rootNamespace>BindOpen.Logging.Tests.Extensions</rootNamespace>
+  <indexes>
+    <add.value key="scriptWord">BindOpen.Logging.Tests.Fakers.BindOpen.Scriptwords</add.value>    
+  </indexes>
+</extension>

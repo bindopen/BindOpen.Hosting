@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <AssemblyName>BindOpen.Logging.Dtos</AssemblyName>
+    <PackageId>BindOpen.Logging.Dtos</PackageId>
+    <Product>BindOpen.Kernel</Product>
+    <Company>BindOpen</Company>
+    <Copyright>Copyright © BindOpen 2011-2026</Copyright>
+    <Description>BindOpen is a framework that allows you to build widely-extended applications. This package provides core classes of the BindOpen.</Description>
+    <Authors>Sumer Team</Authors>
+    <RootNamespace>BindOpen.Logging.Dtos</RootNamespace>
+    <PackageProjectUrl>https://github.com/bindopen/BindOpen.Logging</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bindopen/BindOpen.Logging.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>bindopen_icon.png</PackageIcon>
+    <PackageIconUrl>https://storage.bindopen.org/org/icons/bindopen_icon_64x64.png</PackageIconUrl>
+    <SignAssembly>true</SignAssembly>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>BindOpen.Logging.Dtos.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\img\bindopen_icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BindOpen.Dtos" Version="1.2.177" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Logging.Dtos.Models\Logging.Dtos.Models.csproj" />
+  </ItemGroup>
+</Project>

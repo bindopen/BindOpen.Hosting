@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="https://storage.bindopen.org/xsd/bindopen/kernel" elementFormDefault="qualified" targetNamespace="https://storage.bindopen.org/xsd/bindopen/kernel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ProcessExecutionStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="NothingDone" />
+      <xs:enumeration value="Processing" />
+      <xs:enumeration value="Waiting" />
+      <xs:enumeration value="Queueing" />
+      <xs:enumeration value="Stopped" />
+      <xs:enumeration value="Stopped_Exception" />
+      <xs:enumeration value="Stopped_Error" />
+      <xs:enumeration value="Stopped_User" />
+      <xs:enumeration value="Completed" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
