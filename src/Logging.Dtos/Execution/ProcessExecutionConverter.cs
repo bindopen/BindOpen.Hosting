@@ -22,13 +22,13 @@ namespace BindOpen.Logging
             ProcessExecutionDto dto = new()
             {
                 CustomStatus = poco.CustomStatus,
-                EndDate = poco.EndDate.ToString(DataValueTypes.Date),
+                EndDate = StringHelper.ToString(poco.EndDate),
                 Location = poco.Location,
                 ProgressIndex = poco.ProgressIndex,
                 ProgressMax = poco.ProgressMax,
-                RestartDate = poco.RestartDate.ToString(DataValueTypes.Date),
+                RestartDate = StringHelper.ToString(poco.RestartDate),
                 ResultLevel = poco.ResultLevel,
-                StartDate = poco.StartDate.ToString(DataValueTypes.Date),
+                StartDate = StringHelper.ToString(poco.StartDate),
                 State = poco.State,
                 Status = poco.Status
             };

@@ -182,7 +182,7 @@ namespace BindOpen.Hosting
 
             IBdoLog childLog = null;
 
-            DataStore.Add(("$host", this));
+            DataStore.With(("$host", this));
 
             try
             {

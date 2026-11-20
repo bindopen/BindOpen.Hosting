@@ -46,8 +46,8 @@ public class BdoConditionalEvent : BdoEvent, IBdoConditionalEvent
     {
         if (Condition != null)
         {
-            var localVarSet = BdoData.NewSet(varSet?.ToArray());
-            localVarSet.Add(BdoData.__VarName_This, this);
+            var localVarSet = BdoData.NewSet().With(BdoData.__VarName_This, this);
+            localVarSet.WithItems(varSet?.ToArray());
 
             var b = scope?.Interpreter?.Evaluate(Condition, localVarSet, log) == true;
 

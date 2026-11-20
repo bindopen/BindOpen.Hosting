@@ -64,7 +64,7 @@ public static class LogDbConverter
                 }
             }
 
-            dbItem.Detail = context.Upsert(poco.Detail);
+            //dbItem.Detail = context.Upsert(poco.Detail);
             dbItem.ProcessExecution = context.Upsert(poco.Execution);
             dbItem.TaskConfiguration = context.Upsert(poco.TaskConfig);
         }

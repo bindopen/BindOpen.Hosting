@@ -53,7 +53,7 @@ public static class LogEventDbConverter
 
         if (context != null)
         {
-            dbItem.Detail = context.Upsert(poco.Detail);
+            //dbItem.Detail = context.Upsert(poco.Detail);
             dbItem.Log = context.Upsert(poco.Log);
         }
 

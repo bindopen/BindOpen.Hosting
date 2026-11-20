@@ -41,8 +41,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="17.0.0" />
-    <PackageReference Include="BindOpen.Relational" Version="1.2.176" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.8" />
+    <PackageReference Include="BindOpen.Relational" Version="1.2.177" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using BindOpen.Data;
+using BindOpen.Data.Objects.Interfaces;
 using BindOpen.Logging.Events;
 
 namespace BindOpen.Logging.Loggers;

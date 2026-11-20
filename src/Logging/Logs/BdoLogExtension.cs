@@ -60,7 +60,7 @@ public static class BdoLogExtension
             log._Children ??= BdoData.NewItemSet<IBdoLog>();
             foreach (var child in children)
             {
-                log._Children.Add(child);
+                log._Children.WithItems(child);
             }
         }
 

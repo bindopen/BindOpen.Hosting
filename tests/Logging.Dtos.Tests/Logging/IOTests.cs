@@ -38,8 +38,8 @@ public class IOTests
     {
         _log = BdoLogging.NewLog()
             .WithDetail(
-                BdoData.NewMeta("string", DataValueTypes.Text, "stringValue"),
-                BdoData.NewMeta("int", DataValueTypes.Integer, 1500)
+                ("string", DataValueTypes.Text, "stringValue"),
+                ("int", DataValueTypes.Integer, 1500)
             );
 
         for (int i = 0; i < _testData.itemNumber; i++)

@@ -81,8 +81,8 @@ public class BdoSnapLoggerFormater : IBdoLoggerFormater
         {
             var title = ev.Title ?? ev.Log?.Title;
             var description = ev.Description ?? ev.Log?.Description;
-
-            var st = ev.Date.ToString(DataValueTypes.Date) ?? "";
+            
+            var st = StringHelper.ToString(ev.Date) ?? "";
             st += ev.Kind == BdoEventKinds.Any ? "" : ev.Kind.ToString() + ": ";
             st += string.IsNullOrEmpty(title) ? "" : title;
             st += description == null ? "" : (string.IsNullOrEmpty(title) ? "" : " | ") + description;
